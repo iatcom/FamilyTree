@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Family Tree Prototype</h1>
+    
+    <svg id="relationship-lines" class="relationship-canvas"></svg>
+    <div id="tree-container"></div>
+    <div id="legend">
+        <h3>Legend</h3>
+        <div class="legend-item">
+            <svg width="40" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line married"></line></svg>
+            <span>Married</span>
+        </div>
+        <div class="legend-item">
+            <svg width="40" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line partners"></line></svg>
+            <span>Partners</span>
+        </div>
+        <div class="legend-item">
+            <svg width="40" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line unknown"></line></svg>
+            <span>Unknown/Single Parent</span>
+        </div>
+        <div class="legend-item">
+            <svg width="40" height="3"><path d="M 0 1.5 Q 0 1.5, 40 1.5" class="family-line"></path></svg>
+            <span>Parent-Child</span>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
