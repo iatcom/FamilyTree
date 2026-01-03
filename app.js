@@ -13,8 +13,8 @@ async function loadData() {
         const data = await response.json();
         people = data.people;
         unions = data.unions;
-        initializeIndexes();
-        renderTree('ilie_i'); // Initial render
+        initializeIndexes(); 
+        renderTree('irina_i'); // Initial render
     } catch (error) {
         console.error('Error loading data:', error);
     }
