@@ -34,6 +34,8 @@
     "tatiana_l": { "id": "tatiana_l", "name": "Tatiana L.", "gender": "F", "birth": "1981" },
     "tamara_c": { "id": "tamara_c", "name": "Tamara C.", "gender": "F", "birth": "1958" },
     "victor_b": { "id": "victor_b", "name": "Victor B.", "gender": "M" },
+    "nata_p": { "id": "nata_p", "name": "Nata P.", "gender": "F", "birth": "1986" },
+    "tudor_l": { "id": "tudor_l", "name": "Tudor L.", "gender": "M", "birth": "1976" },
     "anton_j": { "id": "anton_j", "name": "Anton J.", "gender": "M" },
     "mariuca_j": { "id": "mariuca_j", "name": "Mariuca J.", "gender": "F" },
     "trofim_i": { "id": "trofim_i", "name": "Trofim I.", "gender": "M" },
@@ -64,6 +66,7 @@
     { "id": "u15", "partner1": "nicola", "partner2": "rodezia", "type": "married", "children": ["afro", "irene"] },
     { "id": "u16", "partner1": "grigore", "partner2": "valentina_n", "type": "married", "children": ["grigore_n","ghenadie_n"] },
     { "id": "u17", "partner1": null, "partner2": "grigore_n", "type": "unknown", "children": ["nikita_n"] },
-    { "id": "u18", "partner1": "ghenadie_n", "partner2": "angela_n", "type": "married", "children": ["ilona_n", "corina_n"] }
+    { "id": "u18", "partner1": "ghenadie_n", "partner2": "angela_n", "type": "married", "children": ["ilona_n", "corina_n"] },
+    { "id": "u19", "partner1": "vasilie_i", "partner2": "natalia_v", "type": "married", "children": [] }
   ]
 }
