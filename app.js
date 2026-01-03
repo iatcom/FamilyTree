@@ -14,7 +14,7 @@ async function loadData() {
         people = data.people;
         unions = data.unions;
         initializeIndexes();
-        renderTree('mihai_i'); // Initial render
+        renderTree('ilie_i'); // Initial render
     } catch (error) {
         console.error('Error loading data:', error);
     }
