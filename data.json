@@ -36,6 +36,9 @@
     "tamara_c": { "id": "tamara_c", "name": "Tamara C.", "gender": "F", "birth": "1958" },
     "victor_b": { "id": "victor_b", "name": "Victor B.", "gender": "M" },
     "nata_p": { "id": "nata_p", "name": "Nata P.", "gender": "F", "birth": "1986" },
+    "nicolae_p": { "id": "nicolae_p", "name": "Nicolae P.", "gender": "M", "birth": "1984" },
+    "alex_p": { "id": "alex_p", "name": "Alex", "gender": "M", "birth": "2019" },
+    "sofia_p": { "id": "sofia_p", "name": "Sofia", "gender": "F", "birth": "2019" },
     "tudor_l": { "id": "tudor_l", "name": "Tudor L.", "gender": "M", "birth": "1976" },
     "anton_j": { "id": "anton_j", "name": "Anton J.", "gender": "M" },
     "mariuca_j": { "id": "mariuca_j", "name": "Mariuca J.", "gender": "F" },
@@ -48,7 +51,16 @@
     "alexandr": { "id": "alexandr", "name": "Alexandr I.", "gender": "M", "birth": "1997" },
     "diana": { "id": "diana", "name": "Diana", "gender": "F", "birth": "1992" },
     "vladimir": { "id": "vladimir", "name": "Vladimir", "gender": "M" },
-    "vasilica": { "id": "vasilica", "name": "Vasilica", "gender": "M" }
+    "vasilica": { "id": "vasilica", "name": "Vasilica", "gender": "M" },
+    "aftenia": { "id": "aftenia", "name": "Aftenia", "gender": "F" },
+    "victor_l": { "id": "victor_l", "name": "Victor L.", "gender": "M" },
+    "chiril_darie_c": { "id": "chiril_darie_c", "name": "Chiril Darie C.", "gender": "M" },
+    "olga_c": { "id": "olga_c", "name": "Olga C.", "gender": "F" },
+    "darie_c": { "id": "darie_c", "name": "Darie C.", "gender": "M" },
+    "efrosinia_c": { "id": "efrosinia_c", "name": "Efrosinia C.", "gender": "F" },
+    "mina_ababii": { "id": "mina_ababii", "name": "Mina Ababii", "gender": "M" },
+    "efimia_ababii": { "id": "efimia_ababii", "name": "Efimia Ababii", "gender": "F" },
+    "ana_curoglu": { "id": "ana_curoglu", "name": "Ana Curoglu", "gender": "F" }
   },
   "unions": [
     { "id": "u1", "partner1": "mihai_i", "partner2": "silvia_l", "type": "partners", "children": [] },
@@ -71,6 +83,12 @@
     { "id": "u18", "partner1": "ghenadie_n", "partner2": "angela_n", "type": "married", "children": ["ilona_n", "corina_n"] },
     { "id": "u19", "partner1": "vasilie_i", "partner2": "natalia_v", "type": "married", "children": [] },
     { "id": "u20", "partner1": null, "partner2": "alexandra_i", "type": "unknown", "children": ["vasilica"] },
-    { "id": "u21", "partner1": "gavril", "partner2": "lidia", "type": "married", "children": ["natalia"] }
+    { "id": "u21", "partner1": "gavril", "partner2": "lidia", "type": "married", "children": ["natalia"] },
+    { "id": "u22", "partner1": "victor_l", "partner2": "aftenia", "type": "married", "children": ["tudor_l"] },
+    { "id": "u23", "partner1": "chiril_darie_c", "partner2": "olga_c", "type": "married", "children": ["tamara_c"] },
+    { "id": "u24", "partner1": "darie_c", "partner2": "efrosinia_c", "type": "married", "children": ["chiril_darie_c"] },
+    { "id": "u25", "partner1": "mina_ababii", "partner2": "efimia_ababii", "type": "married", "children": ["olga_c"] },
+    { "id": "u26", "partner1": "ana_curoglu", "partner2": null, "type": "married", "children": ["aftenia"] },
+    { "id": "u27", "partner1": "nicolae_p", "partner2": "nata_p", "type": "married", "children": ["alex_p","sofia_p"] }
   ]
 }
