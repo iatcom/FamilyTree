@@ -5,11 +5,14 @@ A user-friendly, interactive family tree visualization application that displays
 ## Features
 
 - **Interactive Tree Visualization** - Click on any family member to view their relationships
+- **URL-Based Navigation** - Share family member links (e.g., `http://localhost:8000/#mihai_i`) that automatically load and display that person
+- **Search Functionality** - Live search to quickly find family members by name
+- **Collapsible Legend** - Toggle the legend on/off for better mobile viewing
 - **Relationship Types** - Displays married, partners, and unknown relationship types with different visual indicators
 - **Age Calculation** - Automatically calculates current age or age at death
-- **Ancestor/Descendant View** - Shows up to 10 generations of ancestors and 2 generations of descendants
+- **Ancestor/Descendant View** - Shows up to 10 generations of ancestors and 4 generations of descendants
 - **Visual Relationship Lines** - SVG lines connect family members with different styles for each relationship type
-- **Responsive Design** - Works on desktop and mobile devices
+- **Mobile-Optimized** - Fully responsive design with touch-friendly interface and optimized controls for all devices
 - **Privacy-Focused** - Displays only first names with family initial (e.g., "Mihai I.") and birth years
 
 ## Project Structure
