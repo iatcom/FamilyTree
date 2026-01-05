@@ -7,29 +7,47 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Family Tree</h1>
+    <header>
+        <h1>Family Tree</h1>
+        <div id="current-person" style="font-size: 14px; color: #666; margin-top: 5px;">Loading...</div>
+    </header>
+
+    <div id="controls" style="padding: 10px; text-align: center;">
+        <input type="text" id="search-input" placeholder="Search family member..." style="width: 90%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+        <div id="search-results" style="display: none; position: absolute; background: white; border: 1px solid #ccc; border-radius: 4px; max-height: 200px; overflow-y: auto; z-index: 100; width: 90%; margin-top: 5px;"></div>
+    </div>
+
     <svg id="relationship-lines" class="relationship-canvas"></svg>
     <div id="tree-container"></div>
     
-    <div id="legend">
+    <div id="legend-toggle" style="text-align: center; padding: 10px;">
+        <button id="legend-btn" style="padding: 8px 16px; background: #2196F3; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">Show Legend</button>
+    </div>
+
+    <div id="legend" style="display: none;">
         <h3>Legend</h3>
         <div class="legend-item">
-            <svg width="40" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line married"></line></svg>
+            <svg width="20" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line married"></line></svg>
             <span>Married</span>
         </div>
         <div class="legend-item">
-            <svg width="40" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line partners"></line></svg>
+            <svg width="20" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line partners"></line></svg>
             <span>Partners</span>
         </div>
         <div class="legend-item">
-            <svg width="40" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line unknown"></line></svg>
+            <svg width="20" height="3"><line x1="0" y1="1.5" x2="40" y2="1.5" class="relationship-line unknown"></line></svg>
             <span>Unknown/Single Parent</span>
         </div>
         <div class="legend-item">
-            <svg width="40" height="3"><path d="M 0 1.5 Q 0 1.5, 40 1.5" class="family-line"></path></svg>
+            <svg width="20" height="3"><path d="M 0 1.5 Q 0 1.5, 40 1.5" class="family-line"></path></svg>
             <span>Parent-Child</span>
         </div>
     </div>
+
+    <div id="loading" style="display: none; text-align: center; padding: 20px;">
+        <div style="font-size: 24px;">Loading...</div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>

@@ -14,10 +14,58 @@ async function loadData() {
         people = data.people;
         unions = data.unions;
         initializeIndexes(); 
-        renderTree('irina_i'); // Initial render
+        
+        // Get person ID from URL hash or path
+        let personId = getPersonFromURL();
+        if (!personId || !people[personId]) {
+            personId = 'irina_i'; // Default
+            setURLForPerson(personId);
+        }
+        
+        renderTree(personId);
     } catch (error) {
         console.error('Error loading data:', error);
     }
+}
+
+// Get person ID from URL hash
+function getPersonFromURL() {
+    // Try hash first: #personId
+    if (window.location.hash) {
+        let hash = window.location.hash.substring(1);
+        // Extract first person ID if multiple are separated by comma
+        if (hash.includes(',')) {
+            hash = hash.split(',')[0];
+        }
+        if (hash && people[hash]) {
+            return hash;
+        }
+    }
+    
+    // Try path: /FamilyTree/personName or similar
+    const path = window.location.pathname;
+    const parts = path.split('/');
+    if (parts.length > 0) {
+        const lastPart = parts[parts.length - 1].toLowerCase().replace(/\s+/g, '_');
+        // Try to find matching person ID
+        for (let id in people) {
+            if (id === lastPart || people[id].name.toLowerCase().replace(/\s+/g, '_') === lastPart) {
+                return id;
+            }
+        }
+    }
+    
+    return null;
+}
+
+// Set URL for a person
+function setURLForPerson(personId) {
+    const person = people[personId];
+    if (!person) return;
+    
+    // Use hash-based routing: #personId
+    const newURL = `#${personId}`;
+    window.history.pushState({ personId }, `${person.name}`, newURL);
 }
 
 // Initialize indexes for faster lookups
@@ -58,7 +106,7 @@ function getAncestors(personId, depth = 0, maxDepth = 10) {
 }
 
 // Get descendants
-function getDescendants(personId, depth = 0, maxInitialDepth = 2) {
+function getDescendants(personId, depth = 0, maxInitialDepth = 4) {
     let descendants = [];
     const childIds = childrenByPerson[personId] || [];
     if (depth < maxInitialDepth) {
@@ -115,6 +163,9 @@ function formatBirthDate(birthDate) {
 function renderTree(rootId) {
     const container = document.getElementById('tree-container');
     container.innerHTML = '';
+    
+    // Update current person display
+    updateCurrentPerson(rootId);
 
     // Group ancestors by depth
     const ancestors = getAncestors(rootId);
@@ -317,9 +368,95 @@ function createPersonBox(id, isSelected = false, unionType = null) {
         box.appendChild(infoDiv);
     }
 
-    box.addEventListener('click', () => renderTree(id));
+    box.addEventListener('click', () => {
+        setURLForPerson(id);
+        renderTree(id);
+    });
     return box;
 }
 
+// Handle browser back/forward buttons
+window.addEventListener('popstate', (event) => {
+    const personId = getPersonFromURL() || 'irina_i';
+    renderTree(personId);
+});
+
+// Update current person display
+function updateCurrentPerson(personId) {
+    const person = people[personId];
+    const display = document.getElementById('current-person');
+    if (display && person) {
+        display.textContent = `Currently viewing: ${person.name}`;
+    }
+}
+
+// Search functionality
+function setupSearch() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    
+    if (!searchInput) return;
+    
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        searchResults.innerHTML = '';
+        
+        if (query.length < 2) {
+            searchResults.style.display = 'none';
+            return;
+        }
+        
+        const matches = [];
+        for (let id in people) {
+            if (people[id].name.toLowerCase().includes(query)) {
+                matches.push({ id, name: people[id].name });
+            }
+        }
+        
+        if (matches.length === 0) {
+            searchResults.style.display = 'none';
+            return;
+        }
+        
+        matches.slice(0, 8).forEach(match => {
+            const div = document.createElement('div');
+            div.className = 'search-result';
+            div.textContent = match.name;
+            div.addEventListener('click', () => {
+                setURLForPerson(match.id);
+                renderTree(match.id);
+                searchInput.value = '';
+                searchResults.innerHTML = '';
+                searchResults.style.display = 'none';
+            });
+            searchResults.appendChild(div);
+        });
+        
+        searchResults.style.display = 'block';
+    });
+}
+
+// Legend toggle functionality
+function setupLegendToggle() {
+    const legendBtn = document.getElementById('legend-btn');
+    const legend = document.getElementById('legend');
+    
+    if (!legendBtn || !legend) return;
+    
+    legendBtn.addEventListener('click', () => {
+        if (legend.style.display === 'none') {
+            legend.style.display = 'block';
+            legendBtn.textContent = 'Hide Legend';
+        } else {
+            legend.style.display = 'none';
+            legendBtn.textContent = 'Show Legend';
+        }
+    });
+}
+
 // Load data on page load
-document.addEventListener('DOMContentLoaded', loadData);
+document.addEventListener('DOMContentLoaded', () => {
+    setupSearch();
+    setupLegendToggle();
+    loadData();
+});
