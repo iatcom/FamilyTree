@@ -28,6 +28,9 @@ FamilyTree/
 ### Option 1: Direct File Opening (Simplest)
 1. Navigate to the project folder
 2. Double-click `index.html` to open in your browser
+3. Click on any person to view their family tree
+4. Use the search box to find specific family members
+5. Click the legend button to toggle the relationship legend on/off
 
 ### Option 2: Local Web Server (Recommended)
 ```powershell
@@ -35,6 +38,9 @@ cd d:\FamilyTree
 python -m http.server 8000
 ```
 Then open your browser to: `http://localhost:8000`
+
+### Sharing a Link
+When you click on a person, the URL updates automatically. You can copy this link (e.g., `http://localhost:8000/#mihai_i`) and share it with others - they will see that same person's family tree when they open it.
 
 ## Data Structure
 
@@ -102,12 +108,15 @@ Then open your browser to: `http://localhost:8000`
 - Color-coded union bars (married, partners, unknown)
 
 ### app.js
-- Data loading and initialization
-- Tree rendering logic
-- SVG line drawing for relationships
+- Data loading and initialization with hash-based URL routing
+- Tree rendering logic with person and union selection
+- SVG line drawing for relationships with automatic resizing
 - Age calculation functions
-- Ancestor and descendant retrieval
-- Event listeners for interactive features
+- Ancestor and descendant retrieval (up to 10 ancestors, 4 descendants)
+- Search functionality with live results
+- Legend toggle for mobile-friendly interface
+- Event listeners for interactive features and URL navigation
+- Current person display in sticky header
 
 ### data.json
 - JSON database with all family members and their relationships
@@ -146,7 +155,6 @@ This application is designed with privacy in mind:
 - **Names**: Only first name + family initial displayed
 - **Dates**: Only birth year shown (not full date)
 - **Optional death year**: Add to mark deceased family members
-- **No external data storage**: All data stays locally
 
 ### Sensitive Information to Avoid
 - Full birth dates (day + month)
@@ -156,7 +164,6 @@ This application is designed with privacy in mind:
 - Financial information
 
 ## Browser Compatibility
-
 - Chrome/Edge (recommended)
 - Firefox
 - Safari
@@ -164,13 +171,12 @@ This application is designed with privacy in mind:
 
 ## Future Enhancements
 
-- Search functionality
-- Print-friendly view
-- Export to PDF
-- Edit mode to add/modify family members
-- Photo gallery integration
-- Timeline view
-- Detailed family statistics
+- Increase/decrease ancestor or descendant depth
+- Zoom and pan controls for large trees
+- Swipe navigation for mobile devices
+- Dark mode
+- Filter by generation or age range
+- Photo/avatar integration
 
 ## License
 
